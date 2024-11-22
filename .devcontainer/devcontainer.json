@@ -1,26 +1,32 @@
 {
   "name": "Sensor Fusion Demo",
-  "image": "mcr.microsoft.com/devcontainers/python:3.9",  // Base Python image
+  "image": "mcr.microsoft.com/devcontainers/python:3.9",
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.9",
-      "installJupyterlab": false
+      "installJupyterlab": true
     }
-  },
-   "build": {
-    "dockerfile": "Dockerfile"
   },
   "customizations": {
     "vscode": {
       "settings": {
-        "python.pythonPath": "/usr/local/bin/python"
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+        "python.terminal.activateEnvironment": true,
+        "python.languageServer": "Pylance",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.colorTheme": "Visual Studio Dark",
+        "editor.formatOnSave": true
       },
       "extensions": [
         "ms-python.python",
-        "ms-toolsai.jupyter"
+        "ms-toolsai.jupyter",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers"
       ]
     }
   },
-  "postCreateCommand": "pip install -r requirements.txt",
+  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
   "remoteUser": "vscode"
 }
